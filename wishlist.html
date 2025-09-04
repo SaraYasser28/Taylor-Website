@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Wishlist</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/wishlist.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/all.min.css" />
+	<!--Lexend Font-->
+	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<!-- Start Top Banner -->
+		<div class="top-banner">
+			<p><span>MEGA SALE</span> Take 10% OFF</p>
+		</div>
+		<!-- End Top Banner -->
+
+		<!--Start Navbar-->
+		<nav class="navbar">
+			<div class="logo">
+				<a href="wishlist.html"><img src="img/logo.png" alt="Tailor Logo"></a>
+			</div>
+
+			<div class="menu-icon" id="menu-icon">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+
+			<ul class="nav-links" id="nav-links">
+				<li><a href="#">Products</a></li>
+				<li><a href="#">Shop</a></li>
+				<li><a href="#">Weddings</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+
+			<div class="icons">
+				<a href="#"><i class="fa-solid fa-user"></i></a>
+				<a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+				<div class="search-wrapper">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="text" placeholder="Search..." />
+				</div>
+
+			</div>
+		</nav>
+		<!--End Navbar-->
+	</header>
+	<!-- Wishlist Page -->
+	<div class="container mt-5">
+		<!-- Wishlist Grid -->
+		<div class="row" id="wishlist-grid">
+			<!-- Dummy products -->
+			<div class="col-md-3 mb-4 wishlist-item">
+				<div class="card h-100">
+					<div class="img-container">
+						<img src="img/img1.png" alt="Travel Hoodie">
+					</div>
+					<div class="card-body text-center">
+						<h5 class="card-title">Travel Hoodie</h5>
+						<p class="card-text">₹ 699</p>
+						<button class="btn btn-primary w-100 mb-2">
+							<i class="bi bi-cart me-2"></i> Add to Cart
+						</button>
+						<button class="btn-remove w-100" onclick="removeItem(this)">
+							<i class="bi bi-trash me-2"></i> Remove
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 mb-4 wishlist-item">
+				<div class="card h-100">
+					<div class="img-container">
+						<img src="img/img2.png" alt="Terracotta Overshirt">
+					</div>
+					<div class="card-body text-center">
+						<h5 class="card-title">Terracotta Overshirt</h5>
+						<p class="card-text">₹ 699</p>
+						<button class="btn btn-primary w-100 mb-2">
+							<i class="bi bi-cart me-2"></i> Add to Cart
+						</button>
+						<button class="btn-remove w-100" onclick="removeItem(this)">
+							<i class="bi bi-trash me-2"></i> Remove
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3 mb-4 wishlist-item">
+				<div class="card h-100">
+					<div class="img-container">
+						<img src="img/img3.jpg" alt="Checked Formalshirt">
+					</div>
+					<div class="card-body text-center">
+						<h5 class="card-title">Checked Formalshirt</h5>
+						<p class="card-text">₹ 699</p>
+						<button class="btn btn-primary w-100 mb-2">
+							<i class="bi bi-cart me-2"></i> Add to Cart
+						</button>
+						<button class="btn-remove w-100" onclick="removeItem(this)">
+							<i class="bi bi-trash me-2"></i> Remove
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Empty Wishlist -->
+		<div class="wishlist-empty d-none" id="wishlist-empty">
+			<img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Empty Wishlist">
+			<h2>Oops! Your wishlist is empty</h2>
+			<p class="text-muted">Start adding items you love and save them for later.</p>
+			<a href="#" class="btn btn-primary mt-3 px-4 py-2">
+				<i class="bi bi-shop me-2"></i> Continue Shopping
+			</a>
+		</div>
+	</div>
+	<!-- Remove Confirmation Modal -->
+	<div class="modal fade" id="removeModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content border-0 shadow-lg rounded-4">
+				<div class="modal-header border-0">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<p class="fs-5 mb-0" id="removeModalText"></p>
+				</div>
+				<div class="modal-footer border-0 d-flex justify-content-center gap-3">
+					<button type="button" class="btn btn-remove" data-bs-dismiss="modal">
+						Cancel
+					</button>
+					<button type="button" class="btn btn-primary" id="confirmRemove">
+						<i class="bi bi-trash me-2"></i> Remove
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Start Footer -->
+	<footer class="footer">
+		<div class="footer-container">
+
+			<div class="footer-column">
+				<h5>SIGN UP AND SAVE</h5>
+				<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+				<div class="footer-input">
+					<input type="email" placeholder="Enter Your Email">
+					<a href="#"><i class="fa-solid fa-envelopes-bulk"></i></a>
+				</div>
+
+				<div class="footer-socials">
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-facebook"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+				</div>
+			</div>
+
+			<div class="footer-column">
+				<h5>LOCATION</h5>
+				<p>007, James Bond Street,<br>London,<br> England.</p>
+				<p>Mon–Sat 10AM – 9PM<br>Sun: Closed</p>
+			</div>
+
+
+			<div class="footer-column">
+				<ul>
+					<li><a href="#">About</a></li>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Services</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Start a Return or <br>Exchange</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-column">
+				<ul>
+					<li><a href="#">Tailoring</a></li>
+					<li><a href="#">Made-to-Measure</a></li>
+					<li><a href="#">Weddings</a></li>
+					<li><a href="#">Made-to-Order</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-column">
+				<ul>
+					<li><a href="#">Orders</a></li>
+					<li><a href="#">Returns</a></li>
+					<li><a href="#">Terms and Conditions</a></li>
+					<li><a href="#">Privacy and Policy</a></li>
+					<li><a href="#">Gifts</a></li>
+					<li><a href="#">Refund Policy</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="footer-bottom">
+			<h5>Designed By Muthu Raman</h5>
+		</div>
+	</footer>
+	<!-- End Footer -->
+
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="js/wishlist.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
